@@ -1,0 +1,11 @@
+{
+  "name": "angularjs_dictionary",
+  "version": "0.0.1",
+  "description": "Building a simple directiory app",
+  "repository": {},
+  "author": "Mimi Maldonado",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
+  }
+}
