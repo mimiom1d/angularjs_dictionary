@@ -1,6 +1,19 @@
-var myControllers = angular.module("myControllers", []);
+// var myControllers = angular.module("myControllers", []);
 
-myControllers.controller("SearchController", 
+
+myApp.controller("RegistrationController", ["$scope", 
+    function($scope){
+        $scope.login = ()=>{
+            $scope.message = "Welcome " + $scope.user.email;
+        }
+
+        $scope.register = ()=>{
+            $scope.message = "Welcome " + $scope.user.firstname;
+        }
+    }   
+]);
+
+myApp.controller("SearchController", 
     function MyController($scope, $http){
         let jsonFile = "js/data.json";
         $http.get(jsonFile)
@@ -11,10 +24,10 @@ myControllers.controller("SearchController",
         });
 });
 
-myControllers.controller("DetailsController", 
+myApp.controller("DetailsController", 
     function MyController($scope, $http, $routeParams){
         let jsonFile = "js/data.json";
-        $http.get(jsonFile)
+        $http.get(jsonFile) // ** use Promise here
             .then(function(res){
                 console.log("http details get entered");
                 $scope.musicians = res.data;

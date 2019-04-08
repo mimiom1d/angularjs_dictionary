@@ -1,16 +1,26 @@
-const myApp = angular.module("myDictionary", [
-    'ngRoute',
-    'myControllers'
+const myApp = angular.module("myApp", [
+    'ngRoute'
 ]);
 
 myApp.config(['$routeProvider', function($routeProvider){
     $routeProvider
-        .when('/', {
-            templateUrl: 'js/template/search.html',
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'RegistrationController'
+        })
+        .when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'RegistrationController'
+        })
+        .when('/loggedin', {
+            templateUrl: 'views/search.html',
             controller: 'SearchController'
         })
         .when('/details/:itemId', {
-            templateUrl: 'js/template/details.html',
+            templateUrl: 'views/details.html',
             controller: 'DetailsController'
+        })
+        .otherwise({ // ** defaul route
+            redirectTo: '/login'
         })
 }]);
