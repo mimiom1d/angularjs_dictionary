@@ -1,11 +1,16 @@
-const myApp = angular.module("myDictionary", []);
+const myApp = angular.module("myDictionary", [
+    'ngRoute',
+    'myControllers'
+]);
 
-myApp.controller("MyController", function MyController($scope, $http){
-    let jsonFile = "js/data.json";
-    $http.get(jsonFile)
-        .then(function(res){
-            console.log("http get entered");
-            $scope.musicians = res.data;
-            $scope.musicianOrder = "name";
-        });
-});
+myApp.config(['$routeProvider', function($routeProvider){
+    $routeProvider
+        .when('/', {
+            templateUrl: 'js/template/search.html',
+            controller: 'SearchController'
+        })
+        .when('/details/:itemId', {
+            templateUrl: 'js/template/details.html',
+            controller: 'DetailsController'
+        })
+}]);
